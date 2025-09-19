@@ -265,5 +265,32 @@
 # lista_1_5 = [i + 1 for i in range(5)] # metodo 1
 # lista_1_5 = [i for i in range(1, 6)]  # metodo 2
 
-#CIAOOOOOO
-# proviamooo
+# -------------------
+
+#lista_mista = [1, "due", 3.0, True]
+
+# ----------------------
+
+# stringa = "Python"
+# lista = []
+# for i in stringa:
+#     lista.append(i)
+
+# print(lista)
+
+# ---------------------------
+
+# a = range(10)
+# lista = []
+# for i in a:
+#     lista.append(i)
+
+# print(lista)
+
+
+# Esercizio 4.2 - Accesso Elementi
+
+lista = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+
+primo = lista[0]
+ultimo = lista[-1]

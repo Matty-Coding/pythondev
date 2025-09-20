@@ -890,8 +890,36 @@
 
 # Esercizio 7.6 - Map Avanzato
 
-# capire bene consegna 
-# sviluppo successivamente
+# def somma(a, b, c):
+#     return a + b + c
+
+# somma_liste = list(map(somma, [1, 2], [3, 4], [5, 6]))
+# print(somma_liste)
+
+# ------------------
+
+# radice = list(map(lambda x: x ** 0.5, [9, 25, 64]))
+# print(radice)
+
+# -----------------
+
+# def maiusc(x):
+#     return x.upper()
+
+# maiuscole = list(map(maiusc, ["hello", "world"]))
+# print(maiuscole)
+
+# --------------
+
+# def incrementa(x):
+#     return x + 5
+
+# lista = [[1, 2, 5], [10, 12, 15]]
+# lista_incrementata = []
+# for i in lista:
+#     lista_incrementata.append(list(map(incrementa, i)))
+
+# print(lista_incrementata)
 
 
 # Esercizio 7.7 - Filter Base
@@ -1071,9 +1099,9 @@
 
 # ---------------------
 
-def somma(x, y, z):
-    return x + y + z
-result = list(map(somma, [1,2], [10,20], [100,200]))
+# def somma(x, y, z):
+#     return x + y + z
+# result = list(map(somma, [1,2], [10,20], [100,200]))
 
 # la funzione map() può essere applicata anche a più argomenti
 # in questo caso però la funzione usata deve prendere in input

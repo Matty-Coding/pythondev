@@ -628,3 +628,454 @@
 # # si prende il valore corrispondente come in un normale dizionario singolo
 
 
+
+# FOR LOOPS - PROGRESSIVO
+
+# Esercizio 6.1 - For Base
+
+# for i in range(5):
+#     print(i)
+
+# lista = [10, 20, 30]
+# for i in lista:
+#     print(i)
+
+# stringa = "Python"
+# for i in stringa:
+#     print(i)
+
+# dizionario = {"a" : 1, "b" : 2}
+# for i in dizionario:
+#     print(i)
+
+
+# Esercizio 6.2 - For con Range
+
+# for i in range(1, 11):
+#     print(i)
+
+# for i in range(10, 0, -1):
+#     print(i)
+
+# for i in range(0, 21, 2):
+#     print(i)
+
+# for i in range(0, 51, 5):
+#     print(i)
+
+# for i in range(7, 71, 7):
+#     print(i)
+
+
+# Esercizi 6.3 - For con Break e Continue
+
+# lista = [i for i in range(1, 21)]
+
+# for i in lista:
+#     if i / 7 == 2:
+#         print("Il primo multiplo di 7 corrisponde a -->", i)
+#         break
+    
+# for i in lista:
+#     if i % 2 == 0:
+#         continue
+#     print("Numero disparo -->", i)
+
+# from random import randint
+
+# n = randint(1, 30)
+# for i, k in enumerate(lista):
+#     if k == n:
+#         print(n, "si trova in posizione", i)
+#         break
+# else:
+#     print(n, "non trovato")
+
+
+# Esercizio 6.4 - For Annidati
+
+# for i in range(1, 5):
+#     print("*" * i)
+
+# lista = [1, 2, 3]
+# lista1 = [4, 5, 6]
+
+# coppie = []
+# for i in lista:
+#     for k in lista1:
+#         coppie.append([i, k])
+
+# print(coppie)
+
+
+# Esercizio 6.5 - For su Strutture Complesse
+
+# studenti = [
+#     {"nome": "Mario", "voti": [8, 7, 9]},
+#     {"nome": "Anna", "voti": [10, 9, 10]},
+#     {"nome": "Luigi", "voti": [6, 7, 6]}
+# ]
+
+# medie = []
+# for i in studenti:
+#     media = round(sum(i["voti"]) / len(i["voti"]), 2)
+#     medie.append([media, i["nome"]])
+
+# print(medie)
+
+# medie.sort(reverse=True)
+# migliore = medie[0]
+# print(migliore[1], migliore[0])
+
+# for i in medie:
+#     if i[0] > 8:
+#         print(i[1], i[0])
+
+
+# Esercizio 6.6 - Casi Particolari For
+
+# lista = [1, 2, 3, 4, 5]
+# for x in lista:
+#     lista.append(x * 2)  # Loop infinito!
+
+# aggiungere elementi ad una lista mentre si itera su di essa genera un loop infinito
+
+# ---------------
+
+# for i in range(5):
+#     if i == 10:
+#         break
+# else:
+#     print("Completato")  # Quando viene eseguito?
+
+# il print nell'else di un for si verifica al termine del ciclo
+
+# --------------------
+
+# points = [(1, 2), (3, 4), (5, 6)]
+# for x, y in points:
+#     print(f"x={x}, y={y}")
+
+# assegno le coppie di valori delle tuple nella lista
+# a due variabili x, y ad ogni ciclo
+
+# ----------------------
+
+# d = {'a': 1, 'b': 2}
+# for k, v in d.items():
+#     print(k, v)
+
+# itera ad ogni ciclo le coppie chiave : valore di un 
+
+
+
+# ENUMERATE, ZIP, MAP, FILTER
+
+
+# Esercizio 7.1 - Enumerate Base
+
+# frutti = ["mela", "banana", "pera"]
+
+# for index, value in enumerate(frutti):
+#     print(f"{index}: {value}")
+
+# for index, value in enumerate(frutti, start=1):
+#     print(f"{index}: {value}")
+
+
+# Esercizio 7.2 - Enumerate Avanzato
+
+# lista = [6, 1, 5, 7]
+# for i, v in enumerate(lista):
+#     if v > 5:
+#         print(f"{i} corrisponde all'indice di un elemento con valore superiore a 5")
+
+# diz = {i : v for i, v in enumerate(lista, 1)}
+# print(diz)
+
+# for i, v in enumerate(lista):
+#     if i % 2 == 0:
+#         lista[i] = v + 1
+
+# print(lista)
+
+# for i, v in enumerate(lista):
+#     if v == 6:
+#         print(f"6 si trova in posizione {i} nella lista.")
+#         break 
+
+
+# Esercizio 7.3 - Zip Base
+
+# nomi = ["Mario", "Anna", "Luigi"]
+# età = [25, 30, 22]
+# città = ["Roma", "Milano", "Napoli"]
+
+# lista_tuple = [(a, b, c) for a, b, c in zip(nomi, età, città)]
+# print(lista_tuple)
+
+# diz = {a : b for a, b in zip(nomi, età)}
+# print(diz)
+
+# for i in lista_tuple:
+#     print(f"{i[0]} ha {i[1]} anni e vive a {i[2]}")
+
+
+# Esercizio 7.4 - Zip Avanzato
+
+# matrice = [
+#     [1, 2, 3],
+#     [4, 5, 6]
+# ]
+
+# trasposta = [
+#     [1, 4],
+#     [2, 5],
+#     [3, 6]
+# ]
+
+# trasposizione (inversione righe, colonne di una matrice)
+
+# matrice_trasposta = [[a, b] for a, b in zip(matrice[0], matrice[1])]
+
+# print("Matrice originale:")
+# for i in matrice:
+#     print(i)
+
+# print("Matrice Trasposta")
+# for i in matrice_trasposta:
+#     print(i)
+
+# lista_unita = [[a, b] for a, b in zip(matrice[0], matrice_trasposta[0])]
+# print(lista_unita)
+
+# quello che accade è che le due liste vengono unite solo fin quando
+# risulta esserci una corrispondenza in termini di numero elementi tra le due liste
+
+# ------------------------
+
+# lista = [1, 2, 3, 4]
+
+# coppie_consecutive = [(a, b) for a, b in zip(lista, lista[1:])]
+# print(coppie_consecutive)
+
+# # funzione zip utilizzata al contrario tramite l'aggiunta di "*" 
+# # prima della lista che si vuole unzippare
+# unzip, unzip1 = list(zip(*coppie_consecutive))
+# print(unzip)
+# print(unzip1)
+
+
+# Esercizio 7.5 - Map Base
+
+# numeri = [1, 2, 3, 4, 5]
+
+# def pew(x):
+#     return x ** 2
+
+# quadrati = list(map(pow, numeri, [2]*len(numeri)))
+# quadrati = list(map(pew, numeri))
+# print(quadrati)
+
+# -----------------------
+
+# def converti(x):
+#     return str(x)
+
+# stringhe = list(map(converti, numeri))
+# print(stringhe)
+
+# funzione personalizzata applicata l'esercizio precedente
+
+
+# Esercizio 7.6 - Map Avanzato
+
+# capire bene consegna 
+# sviluppo successivamente
+
+
+# Esercizio 7.7 - Filter Base
+
+# numeri = range(1, 21)
+
+# def pari(x):
+#     if x % 2 == 0:
+#         return True
+
+# def dieci(x):
+#     if x > 10:
+#         return True
+    
+# def primo(x):
+#     if x < 2:
+#         return False
+    
+#     for i in range(2, x):
+#         if x % i == 0:
+#             return False
+        
+#     return True
+    
+# pari = list(filter(pari, numeri))
+# print(pari)
+
+# dieci = list(filter(dieci, numeri))
+# print(dieci)
+
+# primo = list(filter(primo, numeri))
+# print(primo)
+
+
+# Esercizio 7.8 - Filter Avanzato
+
+# parole = ["python", "java", "c++", "javascript", "go", "rust"]
+
+# def conta_len(x):
+#     if len(x) > 3:
+#         return True
+
+# parole3 = list(filter(conta_len, parole))
+# print(parole3)
+
+# # --------------
+
+# def iniziale(x):
+#     if str(x).startswith("j"):
+#         return True
+    
+# inizia = list(filter(iniziale, parole))
+# print(inizia)
+
+# # ---------------
+
+# def presenza(x):
+#     if "a" in x:
+#         return True
+    
+# contiene = list(filter(presenza, parole))
+# print(contiene)
+
+# # -----------------
+
+# def quattro(x):
+#     if len(x) <= 10:
+#         return True
+    
+# def trova_t(x):
+#     if "t" in x:
+#         return True
+    
+# t_quattro = list(filter(quattro, filter(trova_t, parole)))
+# print(t_quattro)
+
+
+# Esercizio 7.9 - Combinazioni
+
+# studenti = [
+#     {"nome": "Mario", "età": 22, "voto": 85},
+#     {"nome": "Anna", "età": 21, "voto": 92},
+#     {"nome": "Luigi", "età": 23, "voto": 78},
+#     {"nome": "Sara", "età": 20, "voto": 95}
+# ]
+
+# for i, v in enumerate(studenti, 1):
+#     voto = v["voto"]
+#     if voto > 80:
+#         print(f"{i}. {v['nome']} - {voto}")
+
+# nomi = [i["nome"] for i in studenti]
+# anni = [i["età"] for i in studenti]
+# voti = [i["voto"] for i in studenti]
+
+# maggiorenni = [(n, v) for n, a, v in zip(nomi, anni, voti) if a > 18]
+# print(maggiorenni)
+
+# ----------------
+
+# def aumenta(x):
+#     return x + (x * 10) / 100
+
+# voti_aumentati = list(map(aumenta, voti))
+# print(voti_aumentati)
+
+# ----------------------
+
+# def trova_nomi(x):
+#     return True if x["voto"] > 90 else False
+    
+# def maiuscolo(x):
+#     return x.upper()
+
+# trovati = list(filter(trova_nomi, studenti))
+# print(trovati)
+
+# nomi_maiuscoli = list(map(maiuscolo, [i["nome"] for i in trovati]))
+# print(nomi_maiuscoli)
+
+# ---------------------
+
+# ordina_voto = [i["voto"] for i in studenti]
+# ordina_voto.sort(reverse=True)
+# for i, v in enumerate(ordina_voto, 1):
+#     print(f"{i}. {v}")
+
+
+# Esercizio 7.10 - Casi Particolari
+
+# a = [1, 2, 3]
+# b = ['a', 'b']
+# print(list(zip(a, b)))  # Cosa manca?
+
+# essendo liste incongruenti in termini di lunghezza (conta elementi)
+# la nuova lista avrà le tuple con le coppie abbinate 
+# solo fin quando la lunghezza è uguale
+# in questo caso il 3 viene 
+
+# --------------------
+
+# pairs = [(1, 'a'), (2, 'b'), (3, 'c')]
+# numbers, letters = zip(*pairs)  # Unpacking
+
+# stiamo creando due liste di elementi a cui assegnamo
+# in una i primi elementi interi alle tuple
+# nell'altra i secondi elementi
+# abbiamo buildato una specie di zip() inversa
+
+# ------------------
+
+# map con None (Python 2 legacy, non funziona in Python 3)
+# map(None, [1,2], ['a','b'])
+
+# -------------
+
+# print(list(filter(None, [0, 1, '', 'hello', [], [1]])))  
+
+# in questo caso il None viene passato come funzione
+# restituisce tutto cià che risulta True, effettua una specie di BOOLEAN
+
+# ---------------
+
+# d = {'a': 1, 'b': 2}
+# for i, (k, v) in enumerate(d.items()):
+#     print(i, k, v)
+
+# possiamo applicare la funzione enumerate() anche ad un dict
+
+# ------------------
+
+# nums = [1, 2, 3, 4]
+# for a, b in zip(nums, nums[1:]):
+#     print(f"{a} -> {b}")  
+
+# possiamo creare in questo modo una serie di valori consecutivi
+
+# ---------------------
+
+def somma(x, y, z):
+    return x + y + z
+result = list(map(somma, [1,2], [10,20], [100,200]))
+
+# la funzione map() può essere applicata anche a più argomenti
+# in questo caso però la funzione usata deve prendere in input
+# quel determinato quantitativo di elementi per poter essere eseguita
+

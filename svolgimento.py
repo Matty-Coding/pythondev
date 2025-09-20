@@ -556,3 +556,75 @@
 
 # Esercizio 5.5 - Dizionari Annidati
 
+# scuola = {
+#     "classe_1A": {
+#         "studenti": 25,
+#         "voti": {"mario": 8, "anna": 9}
+#     },
+#     "classe_1B": {
+#         "studenti": 22,
+#         "voti": {"luigi": 7, "sara": 10}
+#     }
+# }
+
+# voto_anna = scuola.get("classe_1A").get("voti").get("anna")
+# print(voto_anna)
+
+# scuola["classe_1A"]["studenti"] = 26
+# scuola["classe_1A"]["voti"] = {"luca" : 7}
+# print(scuola)
+
+# voti1B = scuola["classe_1B"]["voti"]
+# media1B = round(sum(voti1B.values()) / len(voti1B.values()), 2)
+# print(media1B)
+
+# studenti_1A = scuola["classe_1A"]["studenti"]
+# studenti_1B = scuola["classe_1B"]["studenti"]
+
+# if int(studenti_1A) > int(studenti_1B):
+#     print("La classe con più studenti corrisponde a -->", studenti_1A)
+# else:
+#     print("La classe con più studenti corrisponde a -->", studenti_1B)
+
+
+# Esercizio 5.6 - Casi Particolari Dizionari
+
+# d = {[1, 2] : "lista"}
+# le chiavi di un dict DEVONO necessariamente essere un singolo elemento e non mutabile
+
+# ----------------
+
+# d = dict.fromkeys(['a', 'b', 'c'], [])
+# d['a'].append(1)
+# print(d) 
+# si sta assegnando la medesima lista a tutte le chiavi del dict
+
+# ---------------------
+
+# d = {'a': 1, 'b': 2, 'c': 3}
+# for key in d:
+#     if d[key] == 2:
+#         del d[key]  # RuntimeError!
+
+# non si possono effettuare operazioni che alterano la dimensione del dict all'interno di un ciclo
+
+# ----------------------
+
+# from collections import ChainMap
+
+# default = {'color': 'red', 'size': 10}
+# custom = {'color': 'blue'}
+# combined = ChainMap(custom, default)
+# # la funzione utilizzata crea una lista di dizionari 
+# # per poterli visualizzare tutti insieme
+
+# print(combined['color']) 
+# # accedendo ad una chiave ripetuta
+# # si prende come valore il primo che si trova
+# # la funzione cercherà in ordine di come sono stati assegnati i dict
+
+# print(combined['size'])   
+# # accedendo ad una chiave presente una sola volta
+# # si prende il valore corrispondente come in un normale dizionario singolo
+
+

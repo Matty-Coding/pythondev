@@ -391,7 +391,8 @@
 # Esercizio 4.7 - Casi Particolari Liste
 
 # a = [[0] * 3] * 3
-# creazione lista, con dentro una lista con 3 elementi (inizializzati a 0) moltiplicato 3 volte (quindi 3 liste del tipo precedentemente detto)
+# creazione lista, con dentro una lista con 3 elementi (inizializzati a 0) 
+# moltiplicato 3 volte (quindi 3 liste del tipo precedentemente detto)
 
 # a[0][0] = 1
 # sto accedendo alla lista generale e poi nidificando al primo elemento del singolo assegnando valore 1
@@ -406,7 +407,8 @@
 #     if numeri[i] % 2 == 0:
 #         numeri.remove(numeri[i])  
 
-# eseguire operazioni sugli indici all'interno di un ciclo (specie rimozione/aggiunta) comporta un'alterazione degli stessi, si finisce in un errore di indicizzazione
+# eseguire operazioni sugli indici all'interno di un ciclo (specie rimozione/aggiunta) 
+# comporta un'alterazione degli stessi, si finisce in un errore di indicizzazione
 
 # ------------------------
 
@@ -417,7 +419,8 @@
 # print(aggiungi(1))
 # print(aggiungi(2))  
 
-# richiamando la funzione una seconda volta la lista non sarà più vuota ma corrisponderà a [1], pertanto passando come nuovo parametro l'elemento di valore 2 il risultato in output sarà [1, 2]
+# richiamando la funzione una seconda volta la lista non sarà più vuota ma corrisponderà a [1]
+# pertanto passando come nuovo parametro l'elemento di valore 2 il risultato in output sarà [1, 2]
 
 # --------------------------
 
@@ -487,7 +490,8 @@
 # print(nome)
 
 # lavoro = persona.get("lavoro", "lavoro predefinito")
-# # il secondo parametro nella funzione get per accedere ai valori di un dict imposta tale parametro come valore di default qualora la ricerca restituisse None
+# # il secondo parametro nella funzione get per accedere ai valori di un dict 
+# # imposta tale parametro come valore di default qualora la ricerca restituisse None
 # print(lavoro)
 
 # persona["lavoro"] = "Ingegnere"
@@ -517,7 +521,8 @@
 # d1.update(d2)
 # print(d1)
 # # si noti la presenza di chiavi con stesso nome
-# # la chiave presente nel dict che viene implementato sostituirà il suo valore rimpiazzando quello presente alla stessa chiave nel dict primario
+# # la chiave presente nel dict che viene implementato sostituirà il suo valore
+# # rimpiazzando quello presente alla stessa chiave nel dict primario
 
 # rimozione = d2.pop("e", "default (non è presente la chiave inserita)")
 # print(d2, "valore della chiave rimossa -->", rimozione)
@@ -544,9 +549,10 @@
 # diz3 = {i : k for i, k in enumerate(stringa, 1)}
 # print(diz3)
 
-lista_tuple = [("a", 1), ("b", 2), ("a", 4)]
-diz4 = {i[0] : [k[1] for k in lista_tuple if k[0] == i[0]] for i in lista_tuple}
-print(diz4)
+# lista_tuple = [("a", 1), ("b", 2), ("a", 4)]
+# diz4 = {i[0] : [k[1] for k in lista_tuple if k[0] == i[0]] for i in lista_tuple}
+# print(diz4)
 
 
 # Esercizio 5.5 - Dizionari Annidati
+

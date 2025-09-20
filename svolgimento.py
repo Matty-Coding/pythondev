@@ -258,7 +258,10 @@
 # Esercizio 4.1 - Creazione Liste
 
 # lista_vuota = []
-# lista_vuota_1 = list("")
+# print(lista_vuota, type(lista_vuota))
+
+# lista_vuota1 = list()
+# print(lista_vuota1, type(lista_vuota1))
 
 # ------------------
 
@@ -286,11 +289,264 @@
 #     lista.append(i)
 
 # print(lista)
-
+ 
 
 # Esercizio 4.2 - Accesso Elementi
 
-lista = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+# lista = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 
-primo = lista[0]
-ultimo = lista[-1]
+# primo = lista[0]
+# ultimo = lista[-1]
+
+# elementi = len(lista)
+# if elementi % 2 == 0:
+#     a = int(len(lista) / 2)
+#     centrale = [lista[a - 1], lista[a]]
+# else:
+#     centrale = lista[int(len(lista) / 2)]
+
+# print(centrale)
+
+# primi3 = lista[:3]
+# ultimi3 = lista[-3:]
+# terzo_settimo = lista[2:7]
+
+# indici_pari = [v for i, v in enumerate(lista, 1) if i % 2 == 0]
+# print(indici_pari)
+
+# lista.reverse()
+# print(lista)
+
+
+# Esercizio 4.3 - Modifica Liste
+
+# numeri = [1, 2, 3, 4, 5]
+
+# numeri.append(6)
+# print(numeri)
+
+# numeri.insert(0, 0)
+# print(numeri)
+
+# numeri.remove(3)
+# print(numeri)
+
+# indice_sostituisci = numeri.index(4)
+# numeri.pop(indice_sostituisci)
+# sostituisci = numeri.insert(indice_sostituisci, 40)
+# print(numeri)
+
+# estendi = [7, 8, 9]
+# numeri.extend(estendi)
+# print(numeri)
+
+# numeri.clear()
+# print(numeri)
+
+
+# Esercizio 4.4 - Metodi Liste
+
+# frutti = ["mela", "banana", "mela", "pera", "banana", "mela"]
+
+# mele = frutti.count("mele")
+# print(mele)
+
+# prima_banana = frutti.index("banana")
+# print(prima_banana)
+
+# frutti.reverse()  
+# print(frutti)
+
+# frutti.sort()
+# print(frutti)
+
+# copia = frutti.copy()
+# print(frutti, "\n", copia)
+
+# frutti.pop(-1)
+# print(frutti)
+
+# frutti.clear()
+# print(frutti)
+
+
+# Esercizio 4.5 - List Comprehension
+
+# quadrati = [i ** 2 for i in range(10)]
+# print(quadrati)
+
+# pari = [i for i in range(21) if i % 2 == 0]
+# print(pari)
+
+# maiuscole = [i for i in "AbCdE" if i == i.capitalize()]
+# print(maiuscole)
+
+# lista = [[i, i ** 2] for i in range(1, 6)]
+# print(lista)
+
+# divisibili = [i for i in range(1, 31) if i % 3 == 0 or i % 5 == 0]
+# print(divisibili)
+
+
+# Esercizio 4.7 - Casi Particolari Liste
+
+# a = [[0] * 3] * 3
+# creazione lista, con dentro una lista con 3 elementi (inizializzati a 0) moltiplicato 3 volte (quindi 3 liste del tipo precedentemente detto)
+
+# a[0][0] = 1
+# sto accedendo alla lista generale e poi nidificando al primo elemento del singolo assegnando valore 1
+
+# print(a)
+# si verifica in tutte le liste poichè accedendo alla lista, in-line è specificato di creare 3 liste uguali
+
+# --------------------
+
+# numeri = [1, 2, 3, 4, 5]
+# for i in range(len(numeri)):
+#     if numeri[i] % 2 == 0:
+#         numeri.remove(numeri[i])  
+
+# eseguire operazioni sugli indici all'interno di un ciclo (specie rimozione/aggiunta) comporta un'alterazione degli stessi, si finisce in un errore di indicizzazione
+
+# ------------------------
+
+# def aggiungi(item, lista=[]):
+#     lista.append(item)
+#     return lista
+
+# print(aggiungi(1))
+# print(aggiungi(2))  
+
+# richiamando la funzione una seconda volta la lista non sarà più vuota ma corrisponderà a [1], pertanto passando come nuovo parametro l'elemento di valore 2 il risultato in output sarà [1, 2]
+
+# --------------------------
+
+# x = [0, 1, 2, 3, 4, 5]
+
+# print(x[5:2:-1])
+# va interpretato come la funzione range(x, y, z) con 3 elementi dove (x = inizio, y = fine, z = progressione) quindi:
+# si parte da x[5] 
+# si arriva fino a x[3] poichè in reverse l'indice minore viene escluso dallo slicing 
+# infine si specifica la progressione -1
+# si ha quindi --> x[3:5] in reverse di 1 (non salta valori), ovvero --> [5, 4, 3]
+
+# print(x[::-2])
+# seguendo il ragionamento descritto per l'esercizio precedente...
+# si ha come inizio x[:] --> ovvero tutta la lista
+# si ha come fine x[:] --> ovvero tutta la lista 
+# infine si specifica la progressione -2
+# si ha quindi --> x[:] in reverse di 2 (salta valori a 2 a 2), ovvero --> [5, 3, 1]
+
+
+
+# DIZIONARI - COMPLETO
+
+# Esercizio 5.1 - Creazione Dizionari
+
+# diz_vuoto = {}
+# print(diz_vuoto, type(diz_vuoto))
+
+# diz_vuoto1 = dict()
+# print(diz_vuoto1, type(diz_vuoto1))
+
+# -----------------
+
+# diz = {"nome" : "Mario", "età" : 25}
+# print(diz, type(diz))
+
+# ------------------
+
+# lista_tuple = [(1, "uno"), (2, "due")]
+# diz = {}
+# for i in lista_tuple:
+#     diz[i[0]] = i[1]
+
+# print(diz)
+
+# ------------------------
+
+# lista = ["nome", "cognome"]
+# lista1 = ["mario", "rossi"]
+# diz = {}
+# for i, k in zip(lista, lista1):
+#     diz[i] = k
+
+# print(diz)
+
+# ------------------
+
+# diz = {f"chiave{i}" : f"valore{i}" for i in range(5)}
+# print(diz)
+
+
+# Esercizio 5.2 - Accesso e Modifica
+
+# persona = {"nome": "Anna", "età": 30, "città": "Roma"}
+
+# nome = persona["nome"]
+# print(nome)
+
+# lavoro = persona.get("lavoro", "lavoro predefinito")
+# # il secondo parametro nella funzione get per accedere ai valori di un dict imposta tale parametro come valore di default qualora la ricerca restituisse None
+# print(lavoro)
+
+# persona["lavoro"] = "Ingegnere"
+# print(persona)
+
+# persona["età"] = 31
+# print(persona)
+
+# persona.pop("città")
+# print(persona)
+
+# if "email" in persona:
+#     print("La key 'email' esiste.")
+# else:
+#     print("La key 'email' non esiste.")
+
+
+# Esercizio 5.3 - Metodi Dizionari
+
+# d1 = {"a": 1, "b": 2}
+# d2 = {"b": 3, "c": 4}
+
+# print(d1.keys())
+# print(d1.values())
+# print(d1.items())
+
+# d1.update(d2)
+# print(d1)
+# # si noti la presenza di chiavi con stesso nome
+# # la chiave presente nel dict che viene implementato sostituirà il suo valore rimpiazzando quello presente alla stessa chiave nel dict primario
+
+# rimozione = d2.pop("e", "default (non è presente la chiave inserita)")
+# print(d2, "valore della chiave rimossa -->", rimozione)
+
+# d2.setdefault("email")
+# print(d2)
+
+# d3 = d2.copy()
+# print(d3)
+
+
+# Esercizio 5.4 - Dict Comprehension
+
+# diz = {x : x ** 2 for x in range(1, 6)}
+# print(diz)
+
+# diz1 = {v : k for k, v in diz.items()}
+# print(diz1)
+
+# diz2 = {k : v for k, v in diz.items() if v > 10}
+# print(diz2) 
+
+# stringa = "sonounastringa"
+# diz3 = {i : k for i, k in enumerate(stringa, 1)}
+# print(diz3)
+
+lista_tuple = [("a", 1), ("b", 2), ("a", 4)]
+diz4 = {i[0] : [k[1] for k in lista_tuple if k[0] == i[0]] for i in lista_tuple}
+print(diz4)
+
+
+# Esercizio 5.5 - Dizionari Annidati

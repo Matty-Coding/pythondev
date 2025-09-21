@@ -1665,7 +1665,7 @@
 
 # lambda dichiara : istruzioni
 # .append() restituisce None
-# con or start[-1] ci assicuriamo che l'ultimo valore inserito
+# con start[-1] ci assicuriamo che l'ultimo valore inserito
 # sia letto e incrementato a sua volta
 
 # ------------------

@@ -1264,11 +1264,11 @@
 
 # Esercizio 8.4 - Matrice Operations
 
-matrice = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9]
-]
+# matrice = [
+#     [1, 2, 3],
+#     [4, 5, 6],
+#     [7, 8, 9]
+# ]
 
 # trasposta = [[a, b, c] for a, b, c in zip(matrice[0], matrice[1], matrice[2])]
 

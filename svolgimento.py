@@ -1107,3 +1107,573 @@
 # in questo caso però la funzione usata deve prendere in input
 # quel determinato quantitativo di elementi per poter essere eseguita
 
+
+
+# ESERCIZI MISTI AVANZATI
+
+
+# Esercizio 8.1 - Sistema Voti
+
+# studenti = {
+#     "Mario" : [4, 5, 6],
+#     "Luca" : [7, 5, 8],
+#     "Giulia" : [6, 3, 5],
+#     "Alice" : [5, 4, 5]
+# }
+
+# medie = {nome : round(sum(voti) / len(voti), 2) for nome, voti in studenti.items()}
+# print(medie)
+
+# ---------
+
+# ordina = sorted(medie.items(), key=lambda item : item[1], reverse=True)
+# print(dict(ordina[:3]))
+
+# sorted --> builtin di python che funziona su ogni iterabile
+# in questo caso ho bisogno di ordinare per medie
+# le medie sono i valori delle chiavi di un dizionario
+# quindi itero su tutto il dict, dichiaro una funzione in line con lambda
+# la assegno alla key di sorted (non key del dict)
+# nella lambda specifico di prendere elemento in posizione 1 quindi il valore
+# e ordina in reverse quindi decrescente
+# infine tramite slicing prendo i primi 3 elementi della lista creatasi
+
+# -------------
+
+# def recuperare(x):
+#     return x[1] < 6
+
+# def nomi_recuperi(x):
+#     return x[0]
+
+# recuperi = list(filter(recuperare, medie.items()))
+# insufficienti = list(map(nomi_recuperi, recuperi))
+
+# for i in insufficienti:
+#     print(f"{i} deve recuperare")
+
+
+# Esercizio 8.2 - Analisi Testo
+
+# from collections import Counter
+
+# testo = """Python è un linguaggio di programmazione. 
+#            Python è facile da imparare. 
+#            Python è potente e versatile."""
+
+# parole = testo.split()
+# pulizia del testo da caratteri nascosti/indesiderati
+
+# conteggi = Counter(parole)
+# utilizzo della funzione Counter() del modulo collections
+# restituisce un'assocazione della parola trova e il relativo conteggio
+
+# lunghezze_parole = ([len(i) for i in conteggi])
+# creazione lista con solo valori relativi al conteggio delle parole
+
+# media_lunghezza_parole = sum(lunghezze_parole) / len(lunghezze_parole)
+# sum() per avere somma degli elementi della lista
+# len() per avere il numero di elementi nella lista
+# alternativa: importare funzione mean() dal modulo numpy
+
+# print(round(media_lunghezza_parole, 2))
+# round() per arrotondare e ridurre i decimali del risultato di tipo float
+
+# -------------
+
+# frasi = testo.split(".")
+# conta_frasi = 0
+# for i in frasi:
+#     if "Python" in i:
+#         conta_frasi += 1
+#         print(i)
+
+# print("Le frasi che contengono la parola \"Python\" sono", conta_frasi)
+
+# -------------
+
+# parole = testo.replace(".", "").split()
+# nuova_stringa = ""
+# for i in parole:
+#     if i not in nuova_stringa:
+#         if i == "imparare":
+#             nuova_stringa += f"{i}, "
+#         elif i == parole[-1]:
+#             nuova_stringa += f"{i}."
+#         else:
+#             nuova_stringa += f"{i} "
+#     elif i == "e":
+#         nuova_stringa += f"{i} "
+
+# print(nuova_stringa)
+
+# -----------------
+
+# parole = testo.split()
+# indice = {}
+# for i, v in enumerate(parole):
+#     if v in indice:
+#         indice[v].append(i)
+#     else:
+#         indice[v] = [i]
+
+# print(indice)
+
+
+# Esercizio 8.3 - Gestione Inventario
+
+# inventario = {
+#     "mele": {"quantità": 50, "prezzo": 0.5},
+#     "banane": {"quantità": 30, "prezzo": 0.3},
+#     "arance": {"quantità": 0, "prezzo": 0.4}
+# }
+
+# ordini = [
+#     {"prodotto": "mele", "quantità": 10},
+#     {"prodotto": "banane", "quantità": 35},  # Non disponibile
+#     {"prodotto": "pere", "quantità": 5}      # Non esiste
+# ]
+
+# for k, v in inventario.items():
+#     if v["quantità"] > 0:
+#         print(f"{k} disponibili {v["quantità"]}")
+    
+#     elif v["quantità"] == 0:
+#         print(f"{k} prodotto esaurito.")
+
+#     elif v["quantità"] < 10:
+#         print(f"{k} in esaurimento... fare nuovo ordine.")
+
+# ---------
+
+# for i in ordini:
+#     if i["prodotto"] not in inventario.keys():
+#         print(f"{i["prodotto"]} non esiste nell'inventario.")
+#     else:   
+#         if i["quantità"] <= inventario[i["prodotto"]]["quantità"]:
+#             inventario[i["prodotto"]]["quantità"] -= i["quantità"]
+#             vendite = inventario[i["prodotto"]]["prezzo"] * i["quantità"]
+#             print(f"{i["prodotto"]} acquistate")
+#             print(f"Disponibilità {i["prodotto"]} aggiornata a {inventario[i["prodotto"]]["quantità"]}")
+#             print(f"Totale vendite di {i["prodotto"]}:")
+#             print(f"{i["quantità"]} {i["prodotto"]} vendute.")
+#             print(f"Spesa totale: {vendite}")
+#         else:
+#             print(f"La quantità di {i["prodotto"]} richiesta non è disponibile.")
+
+
+# Esercizio 8.4 - Matrice Operations
+
+matrice = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+# trasposta = [[a, b, c] for a, b, c in zip(matrice[0], matrice[1], matrice[2])]
+
+# for i in trasposta:
+#     print(i)
+
+# --------------
+
+# def righe(x):
+#     return sum(x)
+
+# somma_righe = list(map(righe, matrice))
+# print(somma_righe)
+
+# ------------
+
+# somma_colonne = list(map(righe, trasposta))
+# print(somma_colonne)
+
+# -----------
+
+# diagonale = [matrice[0][0], matrice[1][1], matrice[2][2]]
+# diagonale secondaria (?)
+
+# -----------
+
+# matrice_ruotata = [
+#     [7, 4, 1],
+#     [8, 5, 2],
+#     [9, 6, 3]
+# ]
+
+# ruotata = [[c, b, a] for a, b, c in zip(matrice[0], matrice[1], matrice[2])]
+
+# for i in ruotata:
+#     print(i)
+
+# il procedimento è quello di una trasposizione creando le liste in reverse
+
+# --------------------
+
+# massimo = max(list(map(max, matrice)))
+# print(massimo)
+
+# minimo = min(list(map(min, matrice)))
+# print(minimo)
+
+# applico la funzione max() a tutte le liste nella matrice con map()
+# si crea una lista con list() di questi valori e con il max() esterno
+# posso trovare il valore più alto tra i più alti delle singole liste 
+
+# ---------------------
+
+# appiattisci (?)
+
+
+# Esercizio 8.5 - Parser CSV Semplice
+
+# csv_data = """nome,eta,citta,salario
+# Mario,25,Roma,30000
+# Anna,30,Milano,45000
+# Luigi,22,Napoli,28000
+# Sara,28,Torino,38000"""
+
+# data = csv_data.split("\n")
+
+# chiavi = data[0].split(",")
+
+# dizionari = []
+
+# for i in data[1:]:
+#     valori = i.split(",")
+#     diz = {chiave : valore for chiave, valore in zip(chiavi, valori)}
+#     dizionari.append(diz)
+
+# for i in dizionari:
+#     print(i)
+
+# -------------
+
+# eta_25 = list(filter(lambda x : int(x["età"]) > 25, dizionari))
+# for i in eta_25:
+#     print(i)
+
+# --------------
+
+# dizionari.sort(key=lambda x: int(x["salario"]))
+# for i in dizionari:
+#     print(i)
+
+# ---------------
+
+# salari = [int(i["salario"]) for i in dizionari]
+# salario_medio = round(sum(salari) / len(salari), 2)
+# salario_massimo = max(salari)
+# salario_minimo = min(salari)
+# print(salario_medio)
+# print(salario_massimo)
+# print(salario_minimo)
+
+# -------------
+
+# from json import dumps
+
+# stringa_json = dumps(dizionari, indent=4)
+# print(stringa_json)
+
+
+# PARTE 9: CASI SUPER STRANI
+
+
+# Esercizio 9.1 - Python Quirks
+
+# a = 256
+# b = 256
+# print(a is b)  # ?
+# # il risultato atteso è True, poichè a e b coincidono
+
+# a = 257
+# b = 257
+# print(a is b)  # ?
+# # il risultato atteso è True, poichè a e b coincidono
+
+# ---------------
+
+# def f(x, lista=[]):
+#     lista.append(x)
+#     return lista
+
+# print(f(1))
+# print(f(2))  # ?
+
+# la funzione viene definita con un parametro x 
+# e con un secondo parametro, una lista vuota di default
+# dopo il primo utilizzo il parametro di default non rimane tale
+# si ha quindi il primo output [1] e il secondo [1, 2]
+
+# --------------
+
+# funcs = []
+# for i in range(3):
+#     funcs.append(lambda: i)
+
+# print(funcs)
+# for f in funcs:
+#     print(f())  # ?
+
+# lista vuota funcs
+# aggiunta elementi del tipo lambda : i dove i = 0, 1, 2
+# lambda per tenere il valore va scritto lambda i = i : i
+# con questa sintassi dell'esempio il valore trattenuto è l'ultimo inserito
+# quindi tutte le funzioni lambda in funcs quando richiamate stamperanno 2
+
+# ------------------------
+
+# a = [1, 2]
+# b = a
+# a = a + [3]
+# print(b)  # ?
+# qui sto creando una nuova variabile a
+# assegnandogli la lista di a + [3]
+# quindi b prende il valore della prima a 
+
+# a = [1, 2]
+# b = a
+# a += [3]
+# print(b)  # ?
+# qui sto incrementando una variabile ma senza cambiarla
+# quindi b verrà aggiornata a sua volta
+
+
+
+# Esercizio 9.2 - Type Coercion
+
+# print(True + True)  # ?
+# print(False - True)  # ?
+# print(True * 50)  # ?
+# True e False corrispondono a dei valori interi binari 1 0
+
+# print("5" * 3)  # ?
+# print(3 * "5")  # ?
+# ripeto la stringa 3 volte, output atteso --> "555"
+
+# print([] + [])  # ?
+# sommando due liste vuote, si ottiene una lista singola vuota
+
+# print({} or "default")  # ?
+# print("" or "default")  # ?
+# creando elementi impostando una condizione qualora fossero vuoti
+# output atteso --> "default"
+
+# print(all([]))  # ?
+# sto esaminando tutti gli elementi di una lista vuota 
+# True per convenzione
+
+# print(any([]))  # ?
+# cerco qualcosa di specifico ma essendo vuoto risulta False
+
+# print(bool("False"))  # ?
+# bool di una stringa con elementi --> True
+
+# print(bool(" "))  # ?
+# bool di una stringa con elementi (lo spazio conta come elemento)
+# output atteso --> True
+
+
+# Esercizio 9.3 - Scope Traps
+
+# x = 10
+# def func():
+#     print(x)  # UnboundLocalError!
+#     x = 20
+
+# x è dichiarata fuori dalla funzione
+# internamente si prova a stampare ma non esiste al momento del print
+# la si dichiara successivamente ma non viene considerata
+# si può dichiarare internamente prima del print
+
+# ------------
+
+# total = 0
+# def add(val):
+#     total += val  # UnboundLocalError!
+#     return total
+
+# stessa spiegazione di prima
+# inoltre la funzione se non richiamata non può eseguire il codice da sola
+
+# ------------
+
+# for i in range(5):
+#     pass
+# print(i)  # i esiste qui!
+
+# se pur la variabile i esiste salva solo l'ultimo elemento noto 
+# da 0, 1, 2, 3, 4 --> ultimo elemento corrisponde a 4
+# se si vuole mostrare il range completo dell'iterazione
+# bisogna spostare il print internamente al for indentandolo 
+# togliere il pass per eseguire istruzioni
+
+# ------------
+
+# [x for x in range(5)]
+# print(x)  # x esiste? 
+
+# no, è dichiarata e usata nel for interno alla list comprehension
+# non è accessibile esternamente
+
+# --------------
+
+
+# Esercizio 9.4 - Dictionary Madness
+
+# d = {}
+# d[(1, 2)] = "ok"  # Tuple ok
+# # d[[1, 2]] = "no"  # List no!
+# d[frozenset([1, 2])] = "ok"  # Frozenset ok
+
+# per una corretta creazione delle chiavi di un dict
+# occorre avere un elemento IMMUTABILE
+# ecco perchè tupla e frozenset si, e la lista ad esempio no.
+
+# ---------------
+
+# d = {i: i**2 for i in range(5)}
+# for k in list(d.keys()):  # Perché list()?
+#     if k % 2 == 0:
+#         del d[k]
+
+# senza il list stiamo modificando la grandezza di un elemento
+# all'interno di un ciclo, darà errore
+# con list() si crea una corrispondenza dell'elemento usato
+# quindi non stiamo alterando la dimensione dell'iterabile
+# ma solo dell'elemento originale
+
+# ------------
+
+# d = {}
+# d.setdefault('key', []).append(1)
+# d.setdefault('key', []).append(2)
+# print(d)  # ?
+
+# output atteso --> {key : [1 ,2]}
+# setdefault() non restituisce errore se la chiave non è presente nel dict
+# crea una chiave per una corrispondenza
+# e assegna di default una lista vuota in questo caso
+# successivamente viene riempita con gli elementi 1, 2
+
+# ------------------
+
+# d1 = {'a': 1, 'b': 2}
+# d2 = {'b': 3, 'c': 4}
+# # Python 3.5+
+# d3 = {**d1, **d2}
+# # Python 3.9+
+# d4 = d1 | d2
+
+# metodi alternativi per unificare i dict 
+# fare attenzione alle versioni di Python
+
+
+# Esercizio 9.5 - List Mutation Chaos
+
+# a = [1, 2, 3, 4, 5]
+# a[1:4] = [20]  # Sostituisce 3 elementi con 1
+# print(a)  # ?
+
+# in questo modo non vengono modificati i valori 
+# nel range indicato dallo slicing
+# ma vengono rimossi e sostituiti
+
+# ------------------
+
+# a = list(range(10))
+# a[::2] = [99] * 5  # Sostituisce elementi a indici pari
+# print(a)  # ?
+
+# lo slicing ha 3 elementi, inizio fine e progressione
+# : (tutto), : (tutto), 2 (progressione + 2)
+# verranno sostituiti gli elementi con indici pari 
+
+# ---------------------
+
+# matrix = [[0] * 3] * 3
+# matrix[0][0] = 1
+# print(matrix)  # Tutte le righe cambiate!
+
+# si è creata una matrice 3x3 composta da 0
+# si accede alle coordinate dell'elemento i prima posizione
+# da dichiarazione la matrice è composta da 3 liste uguali 
+# assegnando un nuovo valore ad una cella viene replicato
+
+# ---------------
+
+# a = [1, 2, 3]
+# b = a
+# a += [4]  # In-place
+# print(b)  # ?
+
+# output atteso --> [1, 2, 3, 4]
+# b prende il valore di a
+# prima di essere stampato a viene incrementata
+# quindi anche b in output prende la modifica
+
+# ----------------
+
+# a = [1, 2, 3]
+# b = a
+# a = a + [4]  # New object
+# print(b)  # ?
+
+# output atteso --> [1, 2, 3]
+# similmente all'esercizio di prima
+# però stavolta si sta creando una nuova variabile a
+# gli viene assegnato tutto a + [4] 
+# ma b ha preso la prima a
+# differentemente a prima si ha una nuova variabile e non la stessa modificata
+
+# -----------------
+
+# a = [3, 1, 2]
+# b = sorted(a)  # Returns new
+# c = a.sort()   # Returns None!
+# print(a, b, c)  # ?
+
+# sorted() restituisce una lista ordinata
+# .sort() è un metodo delle liste che agisce su di esse 
+# ma non restituisce nulla ecco il motivo del None in ouput
+
+
+
+# PARTE 10: SFIDE
+
+
+# Sfida 1 - One-Liners
+
+# multiplo 3 = fizz
+# multiplo 5 = buzz
+# multiplo 3 e 5 = fizzbuzz
+
+# fizzbuzz = ["FizzBuzz" if i % 15 == 0 else "Fizz" if i % 3 == 0 else "Buzz" if i % 5 == 0 else i for i in range(1, 101)]
+# print(fizzbuzz)
+
+# ----------------
+
+# palindromo = lambda x : x.lower().replace(" ", "") == x.lower().replace(" ", "")[::-1]
+# print(palindromo("otto"))
+# print(palindromo("ciao"))
+
+# -----------------
+
+# fibo = lambda n, start = [0, 1] : None if n < 2 else start + [start.append(start[-1] + start[-2]) or start[-1] for _ in range(2, n)]
+# print(fibo(10))
+
+# lambda dichiara : istruzioni
+# .append() restituisce None
+# con or start[-1] ci assicuriamo che l'ultimo valore inserito
+# sia letto e incrementato a sua volta
+
+# ------------------
+
+# primi = lambda : [i for i in range(2, 101) if not any(i % j == 0 for j in range(2, i))]
+# print(primi())
+
+# list comprehension per aggiungere tutti i numeri da 2 a 100 
+# se il modulo del numero in questione diviso (un ciclo di numeri)
+# che va da 2 al numero in questione sia almeno una volta 0
+# allora non è primo, in caso contrario si aggiunge l'elemento alla lista

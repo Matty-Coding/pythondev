@@ -41,4 +41,47 @@
 # palindrome = [i[0] for i in parole_lettere if i[0].lower() == i[0][::-1].lower() and len(i[0]) > 1]
 # print(f"Lista parole palindrome --> {palindrome}")
 
+
+
 # ---------------------------------
+
+
+
+# CARRELLO DELLA SPESA
+# sconto 10% se totale maggiore di 50
+# sconto 15% se totale maggiore di 100
+# spedizione gratuita sopra i 30 (altrimenti 5)
+# calcola totale
+
+catalogo = {
+    # "pasta": 1.20,
+    "pasta" : 20,
+    "pomodoro": 2.50,
+    "mozzarella": 4.80,
+    "basilico": 1.00,
+    "olio": 8.50,
+    "pane": 1.50,
+    "acqua": 0.50
+}
+
+carrello = [
+    {"prodotto": "pasta", "quantita": 2}
+    # {"prodotto": "pomodoro", "quantita": 1}
+    # {"prodotto": "mozzarella", "quantita": 2},
+    # {"prodotto": "acqua", "quantita": 6}
+]
+
+# calcolo del totale
+totale = sum([q["quantita"] * catalogo[q["prodotto"]] for q in carrello])
+
+# verifichiamo il totale per assegnare:
+# costo spedizione e sconti condizionali
+if totale < 30:
+    totale += 5
+
+if totale > 100:
+    totale -= (15 * totale) / 100
+elif totale > 50:
+    totale -= (10 * totale) / 100
+
+print(f"Totale del carrello: {totale}€.")

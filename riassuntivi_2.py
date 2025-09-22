@@ -53,35 +53,121 @@
 # spedizione gratuita sopra i 30 (altrimenti 5)
 # calcola totale
 
-catalogo = {
-    # "pasta": 1.20,
-    "pasta" : 20,
-    "pomodoro": 2.50,
-    "mozzarella": 4.80,
-    "basilico": 1.00,
-    "olio": 8.50,
-    "pane": 1.50,
-    "acqua": 0.50
-}
+# catalogo = {
+#     # "pasta": 1.20,
+#     "pasta" : 20,
+#     "pomodoro": 2.50,
+#     "mozzarella": 4.80,
+#     "basilico": 1.00,
+#     "olio": 8.50,
+#     "pane": 1.50,
+#     "acqua": 0.50
+# }
 
-carrello = [
-    {"prodotto": "pasta", "quantita": 2}
-    # {"prodotto": "pomodoro", "quantita": 1}
-    # {"prodotto": "mozzarella", "quantita": 2},
-    # {"prodotto": "acqua", "quantita": 6}
-]
+# carrello = [
+#     {"prodotto": "pasta", "quantita": 2}
+#     # {"prodotto": "pomodoro", "quantita": 1}
+#     # {"prodotto": "mozzarella", "quantita": 2},
+#     # {"prodotto": "acqua", "quantita": 6}
+# ]
 
-# calcolo del totale
-totale = sum([q["quantita"] * catalogo[q["prodotto"]] for q in carrello])
+# # calcolo del totale
+# totale = sum([q["quantita"] * catalogo[q["prodotto"]] for q in carrello])
 
-# verifichiamo il totale per assegnare:
-# costo spedizione e sconti condizionali
-if totale < 30:
-    totale += 5
+# # verifichiamo il totale per assegnare:
+# # costo spedizione e sconti condizionali
+# if totale < 30:
+#     totale += 5
 
-if totale > 100:
-    totale -= (15 * totale) / 100
-elif totale > 50:
-    totale -= (10 * totale) / 100
+# if totale > 100:
+#     totale -= (15 * totale) / 100
+# elif totale > 50:
+#     totale -= (10 * totale) / 100
 
-print(f"Totale del carrello: {totale}€.")
+# print(f"Totale del carrello: {totale}€.")
+
+
+
+# -------------------------
+
+
+
+# VALIDATORE PASSWORD
+# lunghezza minima 8 caratteri
+# almeno una maiuscola
+# almeno una minuscola
+# almeno un numero
+# almeno un carattere speciale
+# Ritorna: 
+# (True, "Password valida")
+# (False, [lista_errori])
+# Bonus: calcola un punteggio di forza (debole/media/forte)
+
+# Test
+# # passwords = ["abc123", "Password1!", "TUTTO_MAIUSCOLO", "Sicura123!"]
+# passwords = ["Abcdef#45", "ForzaM3dia!", "@Str0ngPW!!", "ciao123"]
+
+# # funzione di controllo requisiti password
+# def valida_password(password):
+#     tupla_speciali = ("!", "@", "#", "$", "%", "^", "&", "*")
+#     lista_errori = []
+#     punteggio = 0
+    
+#     # check lunghezza
+#     if len(password) > 8:
+#         lunghezza = True
+#         punteggio += 1
+#     else:
+#         lunghezza = False
+#         lista_errori.append("lunghezza")
+    
+#     # inizializzazione contatori
+#     maiuscole = 0
+#     minuscole = 0
+#     speciali = 0
+#     numeri = 0
+
+#     for carattere in password:
+#         # check maiuscole
+#         if carattere.isupper():
+#             maiuscole += 1
+#             punteggio += 1
+#         # check minuscole
+#         elif carattere.islower():
+#             minuscole += 1
+#             punteggio += 1
+#         # check speciali
+#         elif carattere in tupla_speciali:
+#             speciali += 1
+#             punteggio += 2
+#         # check numeri
+#         elif carattere.isdigit():
+#             numeri += 1
+#             punteggio += 1
+        
+#     if maiuscole == 0:
+#         lista_errori.append("maiuscole") 
+#     if minuscole == 0:
+#         lista_errori.append("minuscole") 
+#     if numeri == 0:
+#         lista_errori.append("numeri") 
+#     if speciali == 0:
+#         lista_errori.append("speciali") 
+
+#     if maiuscole != 0 and minuscole != 0 and speciali != 0 and numeri != 0 and lunghezza is True:
+#         return (True, "Password valida", punteggio)
+    
+#     return (False, lista_errori)
+
+# for i in passwords:
+#     print("\n-->", i)
+#     validazione = valida_password(i)
+#     if validazione[0] is True:
+#         if validazione[2] == 11:
+#             print(validazione[1], "--> Debole 🟠")
+#         elif 12 <= validazione[2] < 15:
+#             print(validazione[1] ,"--> Mediocre 🟡")
+#         elif validazione[2] >= 15:
+#             print(validazione[1], "--> Forte 🟢")
+#     else:
+#         print("❌ Password non valida i seguenti criteri non sono rispettati -->", validazione[1])

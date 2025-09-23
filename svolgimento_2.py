@@ -54,8 +54,8 @@
 # calcola totale
 
 # catalogo = {
-#     # "pasta": 1.20,
-#     "pasta" : 20,
+#     # "pasta":1.20,
+#     "pasta" : 26,
 #     "pomodoro": 2.50,
 #     "mozzarella": 4.80,
 #     "basilico": 1.00,
@@ -189,87 +189,186 @@
 # mostra appuntamenti del giorno
 # trova posto libero di x durata minima
 
-agenda = {
-    "2024-01-15": [
-        {"ora": "09:00", "desc": "Riunione", "durata": 60},
-        {"ora": "14:30", "desc": "Call cliente", "durata": 30}
-    ]
-}
+# agenda = {
+#     "2024-01-15": [
+#         {"ora": "09:00", "desc": "Riunione", "durata": 60},
+#         {"ora": "14:30", "desc": "Call cliente", "durata": 30}
+#     ]
+# }
 
-# creazione funzione di visualizzazione dati agenda
-def visualizza_agenda():
-    for index, (k_data, v_ora) in enumerate(agenda.items(), start=1):
-        print(f"{index} - {k_data}")
-        for i in v_ora:
-            print("    ", i)
+# # creazione funzione di visualizzazione dati agenda
+# def visualizza_agenda():
+#     for index, (k_data, v_ora) in enumerate(agenda.items(), start=1):
+#         print(f"{index} - {k_data}")
+#         for i in v_ora:
+#             print("    ", i)
 
-# creazione funzione che prende i dati dell'appuntamento
-def dati_appuntamento():
-    giorno = input("Inserisci numero del giorno (2 cifre) --> ")
-    mese = input("Inserisci numero del mese (2 cifre) --> ")
-    anno = input("Inserisci numero del anno (4 cifre) --> ")
+# # creazione funzione che prende i dati dell'appuntamento
+# def dati_appuntamento():
+#     giorno = input("Inserisci numero del giorno (2 cifre) --> ")
+#     mese = input("Inserisci numero del mese (2 cifre) --> ")
+#     anno = input("Inserisci numero del anno (4 cifre) --> ")
 
-    return f"{anno}-{mese}-{giorno}"
+#     return f"{anno}-{mese}-{giorno}"
     
-def aggiungi_appuntamento(data):
-    if data in agenda.keys():
-        print("La data inserita ha già degli appuntamenti.")
-        for k, v in agenda.items():
-            print(k, "\n    ", v)
+# def aggiungi_appuntamento(data):
+#     if data in agenda.keys():
+#         print("La data inserita ha già degli appuntamenti.")
+#         for k, v in agenda.items():
+#             print(k, "\n    ", v)
 
-        orario = input("Indica l'orario (4 cifre con : separatori) --> ")
+#         orario = input("Indica l'orario (4 cifre con : separatori) --> ")
 
-    else:
-        print("La data inserita non ha appuntamenti prenotati, tutti i posti sono disponibili.")
-        orario = input("Indica l'orario (4 cifre con : separatori) --> ")
+#     else:
+#         print("La data inserita non ha appuntamenti prenotati, tutti i posti sono disponibili.")
+#         orario = input("Indica l'orario (4 cifre con : separatori) --> ")
 
-    scelta_durata = input("Indica la durata dell'appuntamento: [1] - 60min oppure [2] - 30min --> ")
-    if scelta_durata == "1":
-        durata = 60
-    else:
-        durata = 30
+#     scelta_durata = input("Indica la durata dell'appuntamento: [1] - 60min oppure [2] - 30min --> ")
+#     if scelta_durata == "1":
+#         durata = 60
+#     else:
+#         durata = 30
 
-    descrizione = input("Scrivi una breve descrizione dell'appuntamento: ")
+#     descrizione = input("Scrivi una breve descrizione dell'appuntamento: ")
        
-    if data in agenda:
-        for appuntamento in agenda[data]:
-            if appuntamento["ora"] == orario:
-                print("Esiste già un appuntamento a quell'orario.")
+#     if data in agenda:
+#         for appuntamento in agenda[data]:
+#             if appuntamento["ora"] == orario:
+#                 print("Esiste già un appuntamento a quell'orario.")
                 
-                return agenda
+#                 return agenda
     
-    # aggiungo dati all'agenda, segnalando eventuali conflitti di orario
-    if data not in list(agenda.keys()):
-        agenda[data] = [{"ora" : orario, "desc" : descrizione, "durata" : durata}]
-    else:
-        agenda[data] += [{"ora" : orario, "desc" : descrizione, "durata" : durata}]
+#     # aggiungo dati all'agenda, segnalando eventuali conflitti di orario
+#     if data not in list(agenda.keys()):
+#         agenda[data] = [{"ora" : orario, "desc" : descrizione, "durata" : durata}]
+#     else:
+#         agenda[data] += [{"ora" : orario, "desc" : descrizione, "durata" : durata}]
 
-    return agenda
+#     return agenda
 
 # print("Inserisci dati per prenotare appuntamento:")
 # aggiungi_appuntamento(dati_appuntamento())
 # visualizza_agenda()
 
-def cancella_appuntamento():
-    scelta_data = input("Inserisci indice corrispondente alla data contenente l'appuntamento che si vuole eliminare: ")
-    for i, (k, v) in enumerate(agenda.items(), start=1):
-        if str(i) == scelta_data:
-            for indice, appuntamento in enumerate(v, start=1):
-                print(indice, "-", appuntamento)
+# def cancella_appuntamento():
+#     scelta_data = input("Inserisci indice corrispondente alla data contenente l'appuntamento che si vuole eliminare: ")
+#     for i, (k, v) in enumerate(agenda.items(), start=1):
+#         if str(i) == scelta_data:
+#             for indice, appuntamento in enumerate(v, start=1):
+#                 print(indice, "-", appuntamento)
             
-            data_scelta = k
-            break
+#             data_scelta = k
+#             break
 
-    scelta_appuntamento = input("\nInserisci indice corrispondente all'appuntamento che vuoi eliminare: ")
-    for i, (k, v) in enumerate(agenda.items(), start=1):
-        if k == data_scelta:
-            v.pop(int(scelta_appuntamento) - 1)
-            break
+#     scelta_appuntamento = input("\nInserisci indice corrispondente all'appuntamento che vuoi eliminare: ")
+#     for i, (k, v) in enumerate(agenda.items(), start=1):
+#         if k == data_scelta:
+#             v.pop(int(scelta_appuntamento) - 1)
+#             break
 
-    return agenda
+#     return agenda
 
 # visualizza_agenda()
 # cancella_appuntamento()
 # visualizza_agenda()
 
-#finire
+
+
+# --------------
+
+
+
+# CONVERTITORE UNITA DI MISURA
+# lunghezza (metri, piedi, pollici)
+# peso (kg, libbre, once)
+# temperatura (Celsius, Fahrenheit, Kelvin)
+# gestisci input non validi
+
+
+# conversioni = {
+#     "lunghezza": {
+#         "metri_piedi": 3.28084,
+#         "piedi_metri": 0.3048,
+#         "metri_pollici": 39.3700787,
+#         "pollici_metri": 0.0254,
+#         "piedi_pollici": 12.0,
+#         "pollici_piedi": 1/12.0
+#     },
+#     "peso": {
+#         "kg_libbre": 2.20462262185,
+#         "libbre_kg": 0.45359237,
+#         "once_kg": 0.02834952,
+#         "kg_once": 1/0.02834952,
+#         "once_libbre": 1/16.0,
+#         "libbre_once": 16.0
+#     },
+#     "temperatura": {
+#         "celsius_fahrenheit": lambda x: (x * 9/5) + 32,
+#         "fahrenheit_celsius": lambda x: (x - 32) * 5/9,
+#         "celsius_kelvin": lambda x: x + 273.15,
+#         "kelvin_celsius": lambda x: x - 273.15,
+#         "fahrenheit_kelvin": lambda x: (x - 32) * 5/9 + 273.15, 
+#         "kelvin_fahrenheit": lambda x: (x - 273.15) * 9/5 + 32 
+#     }
+# }
+
+
+# # accede al valore scelto per la conversione
+# # effettua il calcolo e ritorna il risultato
+# def converti(valore, tipo_unita, unita1, unita2):
+#     # formatto il tipo di conversione 
+#     tipo_conversione = "_".join([unita1, unita2]).lower()
+
+#     # trovo il valore di conversione 
+#     valore_di_conversione = conversioni[tipo_unita][tipo_conversione]
+
+#     # effettuo il calcolo tramite la funzione specifica della conversione
+#     if tipo_unita == "temperatura":
+#         return valore_di_conversione(valore)
+    
+#     # effettuo il calcolo e ritorno il valore 
+#     return valore * valore_di_conversione
+
+
+# def main():
+#     print("\n   -----  CONVERTITORE DI UNITA  -----\n")
+
+#     while True:
+#         for i, v in enumerate(conversioni.keys(), start=1):
+#             print(f"[{i}] - {v.upper()}")
+
+#         scelta_tipo_conversione = input("Inserisci l'indice corrispondente al tipo di conversione che vuoi fare: ").strip()
+#         indici_conversioni = ("1", "2", "3")
+#         if scelta_tipo_conversione not in indici_conversioni:
+#             print("Scelta non disponibile, riprovare.")
+#             continue
+        
+#         valore = input("Inserisci il valore che vuoi convertire: ").strip()
+#         try:
+#             if float(valore):
+#                 valore = float(valore)
+                
+#         except ValueError as e:
+#             print(f"Il valore inserito non è valido, riprovare.\nTipo di errore --> {e}") 
+#             continue
+        
+#         tipo_conversione_scelta = list(conversioni.keys())[int(scelta_tipo_conversione) - 1]
+#         tupla_conversioni = tuple((k.split("_")[0], k.split("_")[1]) for k in conversioni[tipo_conversione_scelta].keys())
+#         for i, v in enumerate(tupla_conversioni, start=1):
+#             print(f"[{i}]  {v[0].capitalize()} --> {v[1].capitalize()}")
+
+#         indici_ultima_scelta = ("1", "2", "3", "4", "5", "6")
+#         scelta_unita_conversione = input("Inserisci indice corrispondente alla conversione desiderata: ").strip()
+
+#         if scelta_unita_conversione not in indici_ultima_scelta:
+#             print("Scelta non disponibile, riprovare.")
+#             continue
+
+#         unita1, unita2 = tupla_conversioni[int(scelta_unita_conversione) - 1]
+        
+#         # richiamo la funzione per calcolare la conversione 
+#         risultato_conversione = converti(valore, tipo_conversione_scelta, unita1, unita2)
+#         print(f"Risultato conversione: {valore} {unita1.capitalize()} --> {risultato_conversione} {unita2.capitalize()}.")
+#         break
+
+# main()

@@ -387,151 +387,176 @@
 # determina vincitore
 # gestione casi speciali (es. Asso vale 1 o 11)
 
-from random import shuffle, choice
+# from random import shuffle, choice
 
-# semi = ("♥️", "♦️", "♣️", "♠️")
-semi = ["♥", "♦", "♣", "♠"]
-valori = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
+# # semi = ("♥️", "♦️", "♣️", "♠️")
+# semi = ["♥", "♦", "♣", "♠"]
+# valori = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
 
-# creazione mazzo di carte (lista di tuple)
-mazzo = [(valore, seme) for seme in semi for valore in valori]
-
-
-# mischia mazzo 2 volte e ritorna il mazzo mischiato
-def mischia(mazzo):
-    for _ in range(2):
-        shuffle(mazzo)
-    return mazzo
+# # creazione mazzo di carte (lista di tuple)
+# mazzo = [(valore, seme) for seme in semi for valore in valori]
 
 
-# distribuisce le due carte iniziali all'utente e al dealer (escludendole dal mazzo)
-# restituisce mazzo aggiornato, [carte utente], [carte dealer]
-def distribuzione_iniziale(mazzo):
-    carte_utente = []
-    carte_dealer = []
-    for _ in range(4):
-        carta = choice(mazzo)
-        if len(carte_utente) != 2:
-            carte_utente.append(carta)
-        else:
-            carte_dealer.append(carta)
-
-        mazzo.remove(carta)
-
-    return mazzo, carte_utente, carte_dealer
+# # mischia mazzo 2 volte e ritorna il mazzo mischiato
+# def mischia(mazzo):
+#     for _ in range(2):
+#         shuffle(mazzo)
+#     return mazzo
 
 
-# verifica il valore di una mano con gestione assi
-# di default impostati ad 11, se somma del valore > 21 
-# cambio valore ad 1, e controllo fin quando valore < 21 (se possibile)
-def valore_mano(carte):
-    punteggio = 0
-    assi = 0
+# # distribuisce le due carte iniziali all'utente e al dealer (escludendole dal mazzo)
+# # restituisce mazzo aggiornato, [carte utente], [carte dealer]
+# def distribuzione_iniziale(mazzo):
+#     carte_utente = []
+#     carte_dealer = []
+#     for _ in range(4):
+#         carta = choice(mazzo)
+#         if len(carte_utente) != 2:
+#             carte_utente.append(carta)
+#         else:
+#             carte_dealer.append(carta)
 
-    for valore, seme in carte:
-        if valore in ("J", "Q", "K"):
-            punteggio += 10
-        elif valore == "A":
-            punteggio += 11
-            assi += 1
-        else:
-            punteggio += int(valore)
+#         mazzo.remove(carta)
 
-    while punteggio > 21 and assi > 0:
-        punteggio -= 10
-        assi -= 1
-
-    return punteggio
+#     return mazzo, carte_utente, carte_dealer
 
 
-# chiede all'utente se vuole una carta (True) 
-def flusso_gioco():
-    while True:
-        continua = input("\nVuoi chiedere una carta? (s/n): ").strip().lower()
-        if continua == "s":
-            print("\nDistribuendo una nuova carta...\n")
-            return True
-        elif continua == "n":
-            return False
-        else:
-            print("Comando non valido, riprovare.")
+# # verifica il valore di una mano con gestione assi
+# # di default impostati ad 11, se somma del valore > 21 
+# # cambio valore ad 1, e controllo fin quando valore < 21 (se possibile)
+# def valore_mano(carte):
+#     punteggio = 0
+#     assi = 0
+
+#     for valore, seme in carte:
+#         if valore in ("J", "Q", "K"):
+#             punteggio += 10
+#         elif valore == "A":
+#             punteggio += 11
+#             assi += 1
+#         else:
+#             punteggio += int(valore)
+
+#     while punteggio > 21 and assi > 0:
+#         punteggio -= 10
+#         assi -= 1
+
+#     return punteggio
+
+
+# # chiede all'utente se vuole una carta (True) 
+# def flusso_gioco():
+#     while True:
+#         continua = input("\nVuoi chiedere una carta? (s/n): ").strip().lower()
+#         if continua == "s":
+#             print("\nDistribuendo una nuova carta...\n")
+#             return True
+#         elif continua == "n":
+#             return False
+#         else:
+#             print("Comando non valido, riprovare.")
             
 
-# distribuzione carte ulteriori
-# restituisce mazzo aggiornato, carta utente
-def distribuzione(mazzo_mischiato):
-    carta = choice(mazzo_mischiato)
-    mazzo_mischiato.remove(carta)
+# # distribuzione carte ulteriori
+# # restituisce mazzo aggiornato, carta utente
+# def distribuzione(mazzo_mischiato):
+#     carta = choice(mazzo_mischiato)
+#     mazzo_mischiato.remove(carta)
 
-    return mazzo_mischiato, carta
-
-
-# formatta correttamente output a schermo per l'utente
-def formatta_mano(carte):
-    return "  ".join([f"{valore} {seme}" for valore, seme in carte])
+#     return mazzo_mischiato, carta
 
 
-# funzione di avvio del gioco
-def main():
-    print("\n   ----- BLACKJACK INTERATTIVO -----\n")
+# # formatta correttamente output a schermo per l'utente
+# def formatta_mano(carte):
+#     return "  ".join([f"{valore} {seme}" for valore, seme in carte])
 
-    while True:
-        print("\nSto mischiando le carte...\n")
 
-        mazzo_mischiato = mischia(mazzo.copy())
+# # funzione di avvio del gioco
+# def main():
+#     print("\n   ----- BLACKJACK INTERATTIVO -----\n")
 
-        mazzo_aggiornato, utente, dealer = distribuzione_iniziale(mazzo_mischiato)
+#     while True:
+#         print("\nSto mischiando le carte...\n")
 
-        score_utente = valore_mano(utente)
-        score_dealer = valore_mano(dealer)
+#         mazzo_mischiato = mischia(mazzo.copy())
+
+#         mazzo_aggiornato, utente, dealer = distribuzione_iniziale(mazzo_mischiato)
+
+#         score_utente = valore_mano(utente)
+#         score_dealer = valore_mano(dealer)
             
-        # controllo blackjack iniziale
-        if score_utente == 21 or score_dealer == 21:
-            print("BLACKJACK!")
-            print(f"Dealer --> {formatta_mano(dealer)} | Punteggio --> {score_dealer}")
-            print(f"Tu --> {formatta_mano(utente)} | Punteggio --> {score_utente}")
+#         # controllo blackjack iniziale
+#         if score_utente == 21 or score_dealer == 21:
+#             print("BLACKJACK!")
+#             print(f"Dealer --> {formatta_mano(dealer)} | Punteggio --> {score_dealer}")
+#             print(f"Tu --> {formatta_mano(utente)} | Punteggio --> {score_utente}")
 
-            if score_dealer == 21 and score_utente == 21:
-                print("Pareggio! Vince il dealer.")
-            elif score_dealer == 21:
-                print("Hai perso!")
-            else:
-                print("Hai vinto!")
-            break
+#             if score_dealer == 21 and score_utente == 21:
+#                 print("Pareggio! Vince il dealer.")
+#             elif score_dealer == 21:
+#                 print("Hai perso!")
+#             else:
+#                 print("Hai vinto!")
+#             break
 
-        # mostra carte iniziali
-        print(f"Dealer --> {dealer[0][0]} {dealer[0][1]} [CARTA NASCOSTA]")
-        print(f"La tua mano --> {formatta_mano(utente)} | Punteggio --> {score_utente}")
+#         # mostra carte iniziali
+#         print(f"Dealer --> {dealer[0][0]} {dealer[0][1]} [CARTA NASCOSTA]")
+#         print(f"La tua mano --> {formatta_mano(utente)} | Punteggio --> {score_utente}")
 
-        # turno utente
-        while True:
-            if score_utente > 21:
-                # print("SBALLATO! Vince il dealer.")
-                break
+#         # turno utente
+#         while True:
+#             if score_utente > 21:
+#                 # print("SBALLATO! Vince il dealer.")
+#                 break
+#           
+#             continua_mano = flusso_gioco()
+#             if continua_mano:
+#                 mazzo_aggiornato, nuova_carta = distribuzione(mazzo_aggiornato)
+#                 utente.append(nuova_carta)
+#                 score_utente = valore_mano(utente)
+#                 print(f"La tua mano --> {formatta_mano(utente)} | Punteggio --> {score_utente}")
+#             else:
+#                 break
+#         print("\n -- Fine turno --\n")
+#         print(f"Dealer --> {formatta_mano(dealer)} | Punteggio --> {score_dealer}")
+#         print(f"Tu --> {formatta_mano(utente)} | Punteggio --> {score_utente}\n")
 
-            continua_mano = flusso_gioco()
-            if continua_mano:
-                mazzo_aggiornato, nuova_carta = distribuzione(mazzo_aggiornato)
-                utente.append(nuova_carta)
-                score_utente = valore_mano(utente)
-                print(f"La tua mano --> {formatta_mano(utente)} | Punteggio --> {score_utente}")
-            else:
-                break
-        print("\n -- Fine turno --\n")
-        print(f"Dealer --> {formatta_mano(dealer)} | Punteggio --> {score_dealer}")
-        print(f"Tu --> {formatta_mano(utente)} | Punteggio --> {score_utente}\n")
+#         if score_utente > 21:
+#             print("Hai sballato! Vince il dealer.")
+#         elif score_utente == 21:
+#             print("HAI FATTO BLACKJACK!")
+#         elif score_utente > score_dealer:
+#             print("Hai vinto!")
+#         elif score_utente < score_dealer:
+#             print("Hai perso! Vince il dealer.")
+#         else:
+#             print("Pareggio! Vince il dealer.") 
+#         break
 
-        if score_utente > 21:
-            print("Hai sballato! Vince il dealer.")
-        elif score_utente > score_dealer:
-            print("Hai vinto!")
-        elif score_utente < score_dealer:
-            print("Hai perso! Vince il dealer.")
-        else:
-            print("Pareggio! Vince il dealer.") 
-        break
+#     print("\n - - - - - - - - \n")
 
-    print("\n - - - - - - - - \n")
+# main()
 
-main()
-    
+
+
+# ----------------
+
+
+
+# TRACKER ABITUDINI
+# traccia abitudini giornaliere per un mese
+# ogni giorno true/false se rispetti abitudine
+# calcola:
+# streak corrente (giorni consecutivi)
+# streak maggiore (record giorni consecutivi)
+# percentuale di completamento (abitudini) 
+# pattern settimanale (giorno successo maggiore)
+# visualizza calendario 
+
+import random
+abitudini = {
+    "esercizio": {f"2024-01-{i:02d}": random.choice([True, False]) 
+                  for i in range(1, 31)},
+    "lettura": {f"2024-01-{i:02d}": random.choice([True, False]) 
+                for i in range(1, 31)}
+}

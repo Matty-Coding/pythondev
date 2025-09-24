@@ -508,7 +508,9 @@
 #             if score_utente > 21:
 #                 # print("SBALLATO! Vince il dealer.")
 #                 break
-#           
+#             elif score_utente == 21:
+#                 break
+
 #             continua_mano = flusso_gioco()
 #             if continua_mano:
 #                 mazzo_aggiornato, nuova_carta = distribuzione(mazzo_aggiornato)

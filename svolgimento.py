@@ -1654,14 +1654,14 @@
 
 # ----------------
 
-# palindromo = lambda x : x.lower().replace(" ", "") == x.lower().replace(" ", "")[::-1]
+# palindromo = lambda x : x.lower().replace(" ", "") == x.lower().replace(" ", "")
 # print(palindromo("otto"))
 # print(palindromo("ciao"))
 
 # -----------------
 
 # fibo = lambda n, start = [0, 1] : None if n < 2 else start + [start.append(start[-1] + start[-2]) or start[-1] for _ in range(2, n)]
-# print(fibo(10))
+# print(fibo(10)::-1])
 
 # lambda dichiara : istruzioni
 # .append() restituisce None
@@ -1677,3 +1677,20 @@
 # se il modulo del numero in questione diviso (un ciclo di numeri)
 # che va da 2 al numero in questione sia almeno una volta 0
 # allora non è primo, in caso contrario si aggiunge l'elemento alla lista
+
+# --------------------
+
+# matrix = [
+#     [1, 2, 3],
+#     [4, 5, 6],
+#     [7, 8, 9]
+# ]
+
+# trasposta = [
+#     [1, 4, 7],
+#     [2, 5, 8],
+#     [3, 6, 9]
+# ]
+
+# trasposta = lambda m : [list(i) for i in zip(*m)]
+# print(trasposta(matrix))

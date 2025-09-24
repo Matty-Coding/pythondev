@@ -101,7 +101,7 @@
 # Ritorna: 
 # (True, "Password valida")
 # (False, [lista_errori])
-# Bonus: calcola un punteggio di forza (debole/media/forte)
+# Bonus: calcola un score di forza (debole/media/forte)
 
 # Test
 # # passwords = ["abc123", "Password1!", "TUTTO_MAIUSCOLO", "Sicura123!"]
@@ -372,3 +372,166 @@
 #         break
 
 # main()
+
+
+
+# ---------------------------------
+
+
+
+# GIOCO CARTE (es. BlackJack)
+# crea mazzo di carte
+# mischiare il mazzo
+# distribuire carte ai giocatori
+# calcolare i punteggi
+# determina vincitore
+# gestione casi speciali (es. Asso vale 1 o 11)
+
+from random import shuffle, choice
+
+# semi = ("♥️", "♦️", "♣️", "♠️")
+semi = ["♥", "♦", "♣", "♠"]
+valori = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
+
+# creazione mazzo di carte (lista di tuple)
+mazzo = [(valore, seme) for seme in semi for valore in valori]
+
+
+# mischia mazzo 2 volte e ritorna il mazzo mischiato
+def mischia(mazzo):
+    for _ in range(2):
+        shuffle(mazzo)
+    return mazzo
+
+
+# distribuisce le due carte iniziali all'utente e al dealer (escludendole dal mazzo)
+# restituisce mazzo aggiornato, [carte utente], [carte dealer]
+def distribuzione_iniziale(mazzo):
+    carte_utente = []
+    carte_dealer = []
+    for _ in range(4):
+        carta = choice(mazzo)
+        if len(carte_utente) != 2:
+            carte_utente.append(carta)
+        else:
+            carte_dealer.append(carta)
+
+        mazzo.remove(carta)
+
+    return mazzo, carte_utente, carte_dealer
+
+
+# verifica il valore di una mano con gestione assi
+# di default impostati ad 11, se somma del valore > 21 
+# cambio valore ad 1, e controllo fin quando valore < 21 (se possibile)
+def valore_mano(carte):
+    punteggio = 0
+    assi = 0
+
+    for valore, seme in carte:
+        if valore in ("J", "Q", "K"):
+            punteggio += 10
+        elif valore == "A":
+            punteggio += 11
+            assi += 1
+        else:
+            punteggio += int(valore)
+
+    while punteggio > 21 and assi > 0:
+        punteggio -= 10
+        assi -= 1
+
+    return punteggio
+
+
+# chiede all'utente se vuole una carta (True) 
+def flusso_gioco():
+    while True:
+        continua = input("\nVuoi chiedere una carta? (s/n): ").strip().lower()
+        if continua == "s":
+            print("\nDistribuendo una nuova carta...\n")
+            return True
+        elif continua == "n":
+            return False
+        else:
+            print("Comando non valido, riprovare.")
+            
+
+# distribuzione carte ulteriori
+# restituisce mazzo aggiornato, carta utente
+def distribuzione(mazzo_mischiato):
+    carta = choice(mazzo_mischiato)
+    mazzo_mischiato.remove(carta)
+
+    return mazzo_mischiato, carta
+
+
+# formatta correttamente output a schermo per l'utente
+def formatta_mano(carte):
+    return "  ".join([f"{valore} {seme}" for valore, seme in carte])
+
+
+# funzione di avvio del gioco
+def main():
+    print("\n   ----- BLACKJACK INTERATTIVO -----\n")
+
+    while True:
+        print("\nSto mischiando le carte...\n")
+
+        mazzo_mischiato = mischia(mazzo.copy())
+
+        mazzo_aggiornato, utente, dealer = distribuzione_iniziale(mazzo_mischiato)
+
+        score_utente = valore_mano(utente)
+        score_dealer = valore_mano(dealer)
+            
+        # controllo blackjack iniziale
+        if score_utente == 21 or score_dealer == 21:
+            print("BLACKJACK!")
+            print(f"Dealer --> {formatta_mano(dealer)} | Punteggio --> {score_dealer}")
+            print(f"Tu --> {formatta_mano(utente)} | Punteggio --> {score_utente}")
+
+            if score_dealer == 21 and score_utente == 21:
+                print("Pareggio! Vince il dealer.")
+            elif score_dealer == 21:
+                print("Hai perso!")
+            else:
+                print("Hai vinto!")
+            break
+
+        # mostra carte iniziali
+        print(f"Dealer --> {dealer[0][0]} {dealer[0][1]} [CARTA NASCOSTA]")
+        print(f"La tua mano --> {formatta_mano(utente)} | Punteggio --> {score_utente}")
+
+        # turno utente
+        while True:
+            if score_utente > 21:
+                # print("SBALLATO! Vince il dealer.")
+                break
+
+            continua_mano = flusso_gioco()
+            if continua_mano:
+                mazzo_aggiornato, nuova_carta = distribuzione(mazzo_aggiornato)
+                utente.append(nuova_carta)
+                score_utente = valore_mano(utente)
+                print(f"La tua mano --> {formatta_mano(utente)} | Punteggio --> {score_utente}")
+            else:
+                break
+        print("\n -- Fine turno --\n")
+        print(f"Dealer --> {formatta_mano(dealer)} | Punteggio --> {score_dealer}")
+        print(f"Tu --> {formatta_mano(utente)} | Punteggio --> {score_utente}\n")
+
+        if score_utente > 21:
+            print("Hai sballato! Vince il dealer.")
+        elif score_utente > score_dealer:
+            print("Hai vinto!")
+        elif score_utente < score_dealer:
+            print("Hai perso! Vince il dealer.")
+        else:
+            print("Pareggio! Vince il dealer.") 
+        break
+
+    print("\n - - - - - - - - \n")
+
+main()
+    

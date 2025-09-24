@@ -17,6 +17,7 @@ def crea():
 def scrivi():
     with open("dati.txt", "w") as f:
         testo = input("Inserisci il testo da scrivere nel file --> ")
+        
         f.write(testo)
         print("Primo contenuto aggiunto correttamente.")
 

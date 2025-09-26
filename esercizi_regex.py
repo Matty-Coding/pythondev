@@ -167,9 +167,8 @@ def formatta_numero(numero):
     numero_pulito = re.sub(r"[^\d]", "", numero)
 
     # formattazione 
-    numero_formattato = f"{numero_pulito[:3]}-{numero_pulito[3:]}"
-    return numero_formattato
-
+    return f"{numero_pulito[:3]}-{numero_pulito[3:]}"
+    
 numeri_telefono = ["339 123-4567", "(02) 1234 567", "01234-(56)  789"]
 
 # print([formatta_numero(numero) for numero in numeri_telefono])

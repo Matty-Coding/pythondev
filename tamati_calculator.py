@@ -145,7 +145,6 @@ def formatta_risultato(risultato):
     return round(float(risultato), 3)
 
 
-
 # Funzione di avvio e gestione del flusso
 def main():
     linea = "=" * 8
@@ -179,6 +178,7 @@ def main():
             base_radice = input("Inserisci la base della radice: ").strip()
 
             risultato_radice = metodo(base_radice, indice_radice)
+
             # Verifica type() del risultato per separare 
             # messaggio di errore dal risultato effettivo
             if type(risultato_radice) is not float:

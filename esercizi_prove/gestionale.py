@@ -255,7 +255,6 @@ def resetta_voti(materia):
     return studenti
 
 
-
 def main():
     for i in studenti:
         print(i)

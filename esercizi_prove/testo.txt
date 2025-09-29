@@ -1,0 +1,247 @@
+
+"""
+ESERCIZIO: SISTEMA DI GESTIONE STUDENTI E VOTI
+
+Sei stato incaricato di creare un sistema per gestire gli studenti e i loro voti.
+Dovrai completare tutte le funzioni richieste usando liste, cicli for, if e 
+i metodi delle liste (append, remove, pop, insert, sort, reverse, count, index, extend, clear).
+
+DATI INIZIALI:
+- Lista di studenti con i loro voti in diverse materie
+- Ogni studente è rappresentato da una lista: [nome, [voti_matematica], [voti_italiano], [voti_inglese]]
+"""
+
+# DATI DA CONSIDERARE
+studenti = [
+    ["Mario Rossi", [6, 7, 8, 6], [7, 8, 7, 9], [5, 6, 7, 6]],
+    ["Laura Bianchi", [9, 8, 9, 10], [8, 7, 8, 8], [9, 9, 8, 10]],
+    ["Giuseppe Verdi", [5, 6, 5, 7], [6, 6, 7, 6], [7, 8, 7, 8]],
+    ["Anna Neri", [8, 7, 9, 8], [9, 9, 8, 9], [7, 8, 8, 7]],
+    ["Marco Gialli", [4, 5, 6, 5], [6, 5, 6, 7], [5, 5, 6, 6]]
+]
+
+materie = ["Matematica", "Italiano", "Inglese"]
+
+
+
+
+# ==============================================================================
+# 1 Aggiungi un nuovo studente
+# Crea una funzione che aggiunge un nuovo studente alla lista
+# ==============================================================================
+
+def aggiungi_studente(lista_studenti, nome, voti_mat, voti_ita, voti_ing):
+    """
+    Aggiunge un nuovo studente alla lista studenti
+    
+    Parametri:
+    - lista_studenti: lista principale degli studenti
+    - nome: nome dello studente (stringa)
+    - voti_mat, voti_ita, voti_ing: liste con i voti per ogni materia
+    
+    La funzione deve:
+    1. Creare una nuova lista per lo studente
+    2. Usare append() per aggiungere lo studente alla lista principale
+    """
+    
+    pass
+
+
+# ==============================================================================
+# 2 Calcola la media dei voti
+# Crea una funzione che calcola la media di tutti i voti di uno studente
+# ==============================================================================
+
+def calcola_media_studente(studente):
+    """
+    Calcola la media generale di tutti i voti di uno studente
+    
+    Parametro:
+    - studente: lista nel formato [nome, [voti_mat], [voti_ita], [voti_ing]]
+    
+    Deve:
+    1. Usare un ciclo for per iterare su tutte le materie
+    2. Calcolare la somma totale e il numero totale di voti
+    3. Restituire la media
+    
+    Ritorna: media (float)
+    """
+    
+    pass
+
+
+# ==============================================================================
+# 3 Trova gli studenti con insufficienze
+# Usa cicli for e if per trovare studenti con almeno un voto sotto il 6
+# ==============================================================================
+
+def trova_studenti_insufficienze(lista_studenti):
+    """
+    Trova tutti gli studenti che hanno almeno un'insufficienza (voto < 6)
+    
+    Deve:
+    1. Usare cicli for annidati per controllare tutti i voti
+    2. Usare if per verificare se c'è almeno un voto < 6
+    3. Usare append() per aggiungere il nome alla lista risultato
+    
+    Ritorna: lista con i nomi degli studenti con insufficienze
+    """
+    studenti_con_insufficienze = []
+    
+    pass
+    return studenti_con_insufficienze
+
+
+# ==============================================================================
+# 4 Migliora i voti
+# Aumenta di 1 punto tutti i voti insufficienti (< 6), max 10
+# Usa enumerate() e modifica le liste in-place
+# ==============================================================================
+
+def migliora_voti_insufficienti(lista_studenti):
+    """
+    Aumenta di 1 punto tutti i voti < 6 (massimo fino a 10)
+    
+    Deve:
+    1. Usare cicli for per iterare su studenti e voti
+    2. Usare enumerate() per avere l'indice
+    3. Modificare i voti direttamente nella lista
+    4. Usare min() per non superare 10
+    """
+    
+    pass
+
+
+# ==============================================================================
+# 5 Classifica studenti
+# Crea una classifica ordinata per media voti
+# ==============================================================================
+
+def crea_classifica(lista_studenti):
+    """
+    Crea una classifica degli studenti ordinata per media voti (dal migliore)
+    
+    Deve:
+    1. Creare una nuova lista con [nome, media] per ogni studente
+    2. Usare sort() con reverse=True per ordinare dalla media più alta
+    3. Restituire la lista ordinata
+    
+    Ritorna: lista di [nome, media] ordinata per media decrescente
+    """
+    classifica = []
+    
+    pass
+    return classifica
+
+
+# ==============================================================================
+# 6 Rimuovi studente
+# Rimuovi uno studente dalla lista usando remove() o pop()
+# ==============================================================================
+
+def rimuovi_studente(lista_studenti, nome):
+    """
+    Rimuove uno studente dalla lista
+    
+    Deve:
+    1. Cercare lo studente con il nome specificato
+    2. Usare remove() per rimuoverlo oppure pop() con l'indice
+    3. Restituire True se rimosso, False se non trovato
+    
+    Ritorna: True se rimosso, False altrimenti
+    """
+    
+    pass
+
+
+# ==============================================================================
+# 7 Statistiche complete
+# Calcola varie statistiche usando count(), index(), max(), min()
+# ==============================================================================
+
+def statistiche_classe(lista_studenti):
+    """
+    Calcola statistiche complete della classe
+    
+    Deve calcolare:
+    1. Numero totale di studenti (len)
+    2. Media generale della classe
+    3. Studente con media più alta (usa max e una key function)
+    4. Studente con media più bassa (usa min e una key function)
+    5. Numero di studenti con media >= 8 (eccellenze)
+    6. Numero di studenti con media < 6 (insufficienti)
+    
+    Usa count() per contare, cicli for e if per le condizioni
+    
+    Ritorna: dizionario con tutte le statistiche
+    """
+    stats = {}
+    
+    pass
+    return stats
+
+
+# ==============================================================================
+# 8 Inserisci voto in posizione specifica
+# Usa insert() per aggiungere un voto in una posizione specifica
+# ==============================================================================
+
+def inserisci_voto(lista_studenti, nome_studente, materia_index, voto, posizione):
+    """
+    Inserisce un voto in una posizione specifica per uno studente
+    
+    Parametri:
+    - nome_studente: nome dello studente
+    - materia_index: 0 per Matematica, 1 per Italiano, 2 per Inglese  
+    - voto: il voto da inserire
+    - posizione: posizione dove inserire il voto
+    
+    Deve:
+    1. Trovare lo studente
+    2. Usare insert() per aggiungere il voto nella posizione specificata
+    3. Restituire True se inserito, False se studente non trovato
+    """
+    
+    pass
+
+
+# ==============================================================================
+# 9 Unisci classi
+# Usa extend() per unire due liste di studenti
+# ==============================================================================
+
+def unisci_classi(classe1, classe2):
+    """
+    Unisce due classi di studenti in una sola lista
+    
+    Deve:
+    1. Creare una copia della prima classe (usa copy() o [:])
+    2. Usare extend() per aggiungere gli studenti della seconda classe
+    3. Rimuovere eventuali duplicati (studenti con stesso nome)
+    4. Restituire la lista unita
+    """
+    
+    pass
+
+
+# ==============================================================================
+# 10 Resetta voti materia
+# Usa clear() per azzerare i voti di una specifica materia
+# ==============================================================================
+
+def resetta_voti_materia(lista_studenti, materia_index):
+    """
+    Azzera tutti i voti di una specifica materia per tutti gli studenti
+    
+    Parametri:
+    - materia_index: 0 per Matematica, 1 per Italiano, 2 per Inglese
+    
+    Deve:
+    1. Iterare su tutti gli studenti
+    2. Usare clear() per svuotare la lista voti della materia specificata
+    3. Opzionale: aggiungere un voto di default [0] dopo il clear
+    """
+    
+    pass
+
+

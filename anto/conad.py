@@ -4,10 +4,12 @@ from PIL import Image
 
 def crea_url_negozi():
     negozi = ["conad"]
+    
+    negozi.sort()  # Ordina la lista in ordine alfabetico
 
     url_base = "https://www.tuttiprezzi.it"
     
-    return f"{url_base}/conad.html", negozi, url_base
+    return [url_base + f"/{link_negozio}.html" for link_negozio in negozi], negozi, url_base
  
 def prendi_url_immagini(link_negozio):
     try:
@@ -64,7 +66,7 @@ def crea_pdf(cartella):
             immagini_aperture = [Image.open(img).convert("RGB") for img in immagini]
 
             # Salva le immagini come PDF
-            pdf_path = os.path.join(cartella, "volantino_conad.pdf")
+            pdf_path = os.path.join(cartella, "catalogo.pdf")
             immagini_aperture[0].save(pdf_path, save_all=True, append_images=immagini_aperture[1:])
 
             print(f"📄 PDF creato: {pdf_path}")
